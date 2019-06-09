@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>会员卡查询</title>
+<link rel="stylesheet" type="text/css"
+href="ui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="ui/themes/icon.css">
+<script type="text/javascript" src="ui/jquery.min.js"></script>
+<script type="text/javascript" src="ui/jquery.easyui.min.js"></script>
+<script type="text/javascript"
+src="ui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript">
+
+$(function(){
+	
+	//表格初始化
+	$('#grid').datagrid({
+		columns:[[
+		    {field:'sn',title:'会员卡号',width:100},      
+		    {field:'name',title:'会员姓名',width:100},      
+		    {field:'sex',title:'性别',width:100},      
+		    {field:'phone',title:'电话',width:100},      
+		    {field:'point',title:'积分',width:100}     		          
+		 ]]		
+	});
+	
+	//查询 
+	$("#btnSearch").bind('click',function(){
+		$('#grid').datagrid({
+			url:'member/sn/'+$('#sn').val()
+		});
+		
+	});
+	
+	
+})
+
+
+</script>
+
+
+</head>
+<body>
+会员卡号：<input id="sn"><button id="btnSearch">查询</button>
+<table id="grid"></table>
+</body>
+</html>
